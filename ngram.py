@@ -1,5 +1,5 @@
 #Ricardo Saucedo, submission for Kaggle competition with a BIGRAM Implementation
-#
+#Received help from others to get dictionary's lined up
 
 import re
 import csv
