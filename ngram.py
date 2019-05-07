@@ -1,5 +1,5 @@
 #Ricardo Saucedo, submission for Kaggle competition with a BIGRAM Implementation
-
+#Received help from students within class for dictionary assortment
 import re
 import csv
 
