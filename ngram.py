@@ -11,7 +11,6 @@ diacritics = ['a','á','ais','áis','aisti','aistí','ait','áit','ar','ár','ar
 			'mo','mó','na','ná','os','ós','re','ré','scor','scór','te','té','teann',
 			'téann','thoir','thóir']
 
-row = ["Id","Expected"]
 
 tempLib = {}
 unigramLib = {}
