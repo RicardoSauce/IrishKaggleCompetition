@@ -1,30 +1,32 @@
 #Ricardo Saucedo, submission for Kaggle competition with a BIGRAM Implementation
-#Received help from students within class for dictionary assortment
+#
+
 import re
 import csv
 
-tempLib = {}
-unigramLib = {}
-beforeLib = {}
-afterLib = {}
+
+diacritics = ['a','á','ais','áis','aisti','aistí','ait','áit','ar','ár','arsa','ársa',
+			'ban','bán','cead','céad','chas','chás','chuig','chúig','dar','dár','do',
+			'dó','gaire','gáire','i','í','inar','inár','leacht','léacht','leas','léas',
+			'mo','mó','na','ná','os','ós','re','ré','scor','scór','te','té','teann',
+			'téann','thoir','thóir']
 
 num = 1
 row = ["Id","Expected"]
 with open('mySubmission.csv', 'w', newline='') as csvfile:
 	writer = csv.writer(csvfile, delimiter=',')
 	writer.writerow(row)
-                
+       
+	tempLib = {}
+	unigramLib = {}
+	beforeLib = {}
+	afterLib = {}         
 	'''
 	READ IN TRAINING TEXT & FORM DIACRITICS
 	'''
 
 	fileReader = open('train.txt','r', errors = "replace")
 	lines = fileReader.read()
-	diacritics = ['a','á','ais','áis','aisti','aistí','ait','áit','ar','ár','arsa','ársa',
-			'ban','bán','cead','céad','chas','chás','chuig','chúig','dar','dár','do',
-			'dó','gaire','gáire','i','í','inar','inár','leacht','léacht','leas','léas',
-			'mo','mó','na','ná','os','ós','re','ré','scor','scór','te','té','teann',
-			'téann','thoir','thóir']
 	            
 	words = re.split("[, \@\"\'\-!?:.+/\[\])(><\n_]+", lines)
 	words = [w.strip() for w in words]
@@ -119,7 +121,7 @@ with open('mySubmission.csv', 'w', newline='') as csvfile:
 					
 					#or (numValue2Before == 0) or (numValue2After == 0)
 					
-					if (numValueBefore == 0) or (numValueAfter == 0) or (numValue2Before==0) or (numValue2After == 0):
+					if (numValueBefore == 0) or (numValueAfter == 0) or (numValue2Before ==0) or (numValue2After == 0):
 						count1 = 0
 						count2 = 0
 						total = 0
@@ -134,7 +136,7 @@ with open('mySubmission.csv', 'w', newline='') as csvfile:
 							total = count1 + count2
 							probchoice1 = count1/total
 							newRows = [num,probchoice1]
-							writeOutput('mySubmission.csv',num,probchoice1)
+							#writeOutput('mySubmission.csv',num,probchoice1)
 							writer.writerow(newRows)
 							num += 1
 						
@@ -143,11 +145,11 @@ with open('mySubmission.csv', 'w', newline='') as csvfile:
 						probBefore = numValueBefore/(numValueBefore + numValue2Before)
 						probAfter = numValueAfter/(numValueAfter + numValue2After)
 						
-						probBeforeOther = numValue2Before/(numValue2Before + numValueBefore)
-						probAfterOther = numValue2After/(numValue2After + numValueAfter)
+						#probBeforeOther = numValue2Before/(numValue2Before + numValueBefore)
+						#probAfterOther = numValue2After/(numValue2After + numValueAfter)
 						
 						alpha = probAfter * probBefore
-						beta = probBeforeOther * probAfterOther  
+						#beta = probBeforeOther * probAfterOther  
 						totalProb = alpha/(alpha + 1)
 					
 						newRows = [num,totalProb]
