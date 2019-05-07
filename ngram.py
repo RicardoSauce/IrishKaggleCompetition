@@ -47,9 +47,10 @@ for t in diacritics:
 		if (t == word):
 			count += 1
 	unigramLib[t] = count
-	
-##################### BIGRAM IMPLEMENTATION #####################
 
+'''
+BIGRAM IMPLEMENTATION 
+'''
 
 for t in diacritics:		
 	for i in range(len(words)):	
